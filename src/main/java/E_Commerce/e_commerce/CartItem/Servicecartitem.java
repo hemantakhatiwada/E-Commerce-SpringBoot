@@ -4,7 +4,10 @@ import E_Commerce.e_commerce.Product.Modelecommerce;
 import E_Commerce.e_commerce.Product.Repositoryecommerce;
 import E_Commerce.e_commerce.User.Modeluser;
 import E_Commerce.e_commerce.User.Repouser;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+@Service
 public class Servicecartitem {
     private Repocartitem repocart;
     private Repositoryecommerce productrepo;
@@ -25,6 +28,23 @@ public class Servicecartitem {
         cartitem.setProdid(prodobj);
         cartitem.setQuantity(quantity);
 return repocart.save(cartitem);
+
+    }
+public List<Modelcartitem> getcartitembyuser(Long userid)
+{
+ Modeluser user = userrepo.findById(userid).orElseThrow(()-> new RuntimeException("Id not found!"));
+ return repocart.findByModeluser(user);
+}
+
+    public void removeFromCart(Long id) {
+       repocart.deleteById(id);
+    }
+
+    public Modelcartitem updateitem(Long userid,int quantity)
+    {
+        Modelcartitem cartitem= repocart.findById(userid).orElseThrow(()-> new RuntimeException("Userid not found!"));
+   cartitem.setQuantity(quantity);
+   return repocart.save(cartitem);
 
     }
 }

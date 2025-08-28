@@ -25,5 +25,5 @@ public class Serviceuser {
     {
         return repouser.save(user);
     }
-    
+
 }
