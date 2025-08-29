@@ -16,7 +16,7 @@ public class Controllercartitem {
         this.servicecart = servicecart;
     }
     @PostMapping("/addtocart")
-    public Modelcartitem addtocart(@RequestParam Long userid,@RequestParam Long productid,@RequestParam int quantity)
+    public Modelcartitem addtocart(@RequestParam Long userid,@RequestParam Long productid,@RequestParam  int quantity)
     {
         return servicecart.addtocart(userid,productid,quantity);
 

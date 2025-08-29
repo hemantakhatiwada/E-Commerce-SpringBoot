@@ -17,11 +17,11 @@ public class Controlleruser {
       return serv.getalluser();
   }
   @PostMapping("/register")
-    public  Modeluser register(Modeluser user)
+    public  Modeluser register( @RequestBody Modeluser user)
   {
       return serv.register(user);
   }
-  @PostMapping("/findbyid/{id}")
+  @GetMapping("/findbyid/{id}")
     public Modeluser getuserbyid(@PathVariable  Long id)
   {
       return serv.getuserbyid(id);
