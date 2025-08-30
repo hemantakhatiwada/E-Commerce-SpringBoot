@@ -21,20 +21,20 @@ public class Controllercartitem {
         return servicecart.addtocart(userid,productid,quantity);
 
     }
-    @GetMapping("/getcartitembyuser/{id}")
-    public List<Modelcartitem> getcartitembyuser(Long userid)
+    @GetMapping("/getcartitembyuser/{userid}")
+    public List<Modelcartitem> getcartitembyuser(@PathVariable Long userid)
     {
 return servicecart.getcartitembyuser(userid);
     }
-@DeleteMapping("/delete/{id}")
+@DeleteMapping("/delete/{cartitemid}")
     public String removeFromCart(@PathVariable  Long id) {
        servicecart.removeFromCart(id);
        return "Removed from cart! "+id;
     }
     @PutMapping("/update/{id}")
-    public Modelcartitem updateitem(@RequestParam Long userid,@RequestParam int quantity)
+    public Modelcartitem updateitem(@PathVariable Long id,@RequestParam int quantity)
     {
-       return servicecart.updateitem(userid,quantity);
+       return servicecart.updateitem(id,quantity);
 
     }
 

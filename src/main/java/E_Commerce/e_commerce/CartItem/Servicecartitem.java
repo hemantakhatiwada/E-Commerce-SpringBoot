@@ -40,9 +40,9 @@ public List<Modelcartitem> getcartitembyuser(Long userid)
        repocart.deleteById(id);
     }
 
-    public Modelcartitem updateitem(Long userid,int quantity)
+    public Modelcartitem updateitem(Long id,int quantity)
     {
-        Modelcartitem cartitem= repocart.findById(userid).orElseThrow(()-> new RuntimeException("Userid not found!"));
+        Modelcartitem cartitem= repocart.findById(id).orElseThrow(()-> new RuntimeException("Userid not found!"));
    cartitem.setQuantity(quantity);
    return repocart.save(cartitem);
 
